@@ -1,0 +1,33 @@
+
+plugins {
+    id 'org.springframework.boot' version '2.6.4'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+    id 'java'
+}
+
+subprojects {
+
+    apply plugin: 'org.springframework.boot'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'java'
+
+    group = 'org.dwiegand'
+    version = '0.0.1-SNAPSHOT'
+
+    sourceCompatibility = '11'
+    targetCompatibility = '11'
+
+    ext {
+        springCloudVersion = '2021.0.4'
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencyManagement {
+        imports {
+            mavenBom "org.springframework.cloud:spring-cloud-dependencies:${ext.springCloudVersion}"
+        }
+    }
+}
